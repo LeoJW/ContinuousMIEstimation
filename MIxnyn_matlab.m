@@ -27,7 +27,7 @@
 % in your published research.
 
 
-function miout=MIxnyn_matlab(x,y,kneig, pathToSave);
+function miout=MIxnyn_matlab(x,y,kneig, pathToSave)
 
 % Calculate MI value between 2 vector of any dimension (rectangular
 % version)
@@ -67,11 +67,11 @@ end
 
 % save data for C-Programm
 zwsp=[x;y]';
-save zwspMIxnyn.txt zwsp -ASCII
-
+% save zwspMIxnyn.txt zwsp -ASCII
 
 % execute C Programm
 path = [pathToSave '/zwspMIxnyn.txt'];
-[miout] = MIxnyn(path,Ndx, Ndy, N,kneig);
+[miout] = MIxnyn_directpass(path, Ndx, Ndy, N, kneig, zwsp');
+% [miout] = MIxnyn(path, Ndx, Ndy, N, kneig);
 
 
