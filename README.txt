@@ -1,3 +1,13 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Forked by Leo Wood
+
+Instead of saving arrays to text files, then calling MIxnyn.C to that text file,
+now directly passes array of X and Y data to a modified version called MIxnyn_directpass.C
+
+This version uses the interleaved complex API function mxGetDoubles(), so 
+to compile use flag -R2018a, example:  "mex -R2018a MIxnyn_directpass.C"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ======BASIC DESCRIPTION:=====
 
 This software implements the modified Kraskov-Stoegbauer-Grassberger (KSG)
