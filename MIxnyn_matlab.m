@@ -25,7 +25,12 @@
 % Phys. Rev. E 69 (6) 066138, 2004
 %
 % in your published research.
-
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Modified by Leo Wood, July 2022
+% Now passes array of data directly to a modified version of MIxnyn.C, now
+% called MIxnyn_directpass.C
+% This version uses the interleaved complex API function mxGetDoubles(), so
+% to compile use flag "mex -R2018a MIxnyn_directpass.C"
 
 function miout=MIxnyn_matlab(x,y,kneig, pathToSave)
 
@@ -64,14 +69,5 @@ else
     N=Nx;    
 end
 
-
-% save data for C-Programm
-zwsp=[x;y]';
-% save zwspMIxnyn.txt zwsp -ASCII
-
 % execute C Programm
-path = [pathToSave '/zwspMIxnyn.txt'];
-[miout] = MIxnyn_directpass(path, Ndx, Ndy, N, kneig, zwsp');
-% [miout] = MIxnyn(path, Ndx, Ndy, N, kneig);
-
-
+[miout] = MIxnyn_directpass(pathToSave, Ndx, Ndy, N, kneig, [x;y]);
