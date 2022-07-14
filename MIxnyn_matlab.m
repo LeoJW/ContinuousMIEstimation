@@ -27,21 +27,25 @@
 % in your published research.
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Modified by Leo Wood, July 2022
-% Now passes array of data directly to a modified version of MIxnyn.C, now
+% Now passes array of data directly to a modified version of MIxnyn.C, 
 % called MIxnyn_directpass.C
 % This version uses the interleaved complex API function mxGetDoubles(), so
 % to compile use flag "mex -R2018a MIxnyn_directpass.C"
 
-function miout=MIxnyn_matlab(x,y,kneig, pathToSave)
-
+function miout=MIxnyn_matlab(x, y, kneig, pathToSave)
 % Calculate MI value between 2 vector of any dimension (rectangular
 % version)
 % x....input data mxn   m...channelnummer  n...sampling points  m<<n
 % kneig... k nearest neigbor for MI algorithm
+% pathToSave... does nothing, left in so other functions calling this
+% function don't have to be modified
+arguments
+    x (:,:) double 
+    y (:,:) double
+    kneig (1,1) double = 6
+    pathToSave (:,:) char = pwd
+end
 
-
-%default-values
-if ~exist('kneig'), kneig=6; end
 
 
 % check input data if format is correct
