@@ -37,8 +37,8 @@ function miout=MIxnyn_matlab(x, y, kneig, pathToSave)
 % version)
 % x....input data mxn   m...channelnummer  n...sampling points  m<<n
 % kneig... k nearest neigbor for MI algorithm
-% pathToSave... does nothing, left in so other functions calling this
-% function don't have to be modified
+% pathToSave... does nothing, left in so legacy code calling this
+% function shouldn't have to be modified
 arguments
     x (:,:) double 
     y (:,:) double
