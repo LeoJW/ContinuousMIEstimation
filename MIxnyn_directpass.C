@@ -94,6 +94,7 @@ void MIxnyn(int dimx, int dimy, int K, int N, char* fname, double *arr, double *
     if (s==0) {;}
     for (i=0;i<N;i++) {
       x[d][i] = (x[d][i]-me)/s;
+      // catch any values above or below max or min representable value by floating point
       if (x[d][i]<min[d]) min[d]=x[d][i]; 
       if (x[d][i]>max[d]) max[d]=x[d][i];
     }
@@ -107,7 +108,7 @@ void MIxnyn(int dimx, int dimy, int K, int N, char* fname, double *arr, double *
   for (d=0;d<dimx+dimy;d++) scal[d]=BOX1/(max[d]-min[d]); 
 
   mir_xnyn(x,dimx,dimy,N,K,psi,scal,&mir);
-  fprintf(stdout,"%1.8f\n",mir);
+  // fprintf(stdout,"%1.8f\n",mir);
 
    
 
